@@ -1,0 +1,28 @@
+<mat-card class="style-card">
+  <mat-card-content>
+    <mat-list>
+      <mat-list-item class="style-list-item" *ngFor="let msg of msgs">
+        <img
+          matListAvatar
+          src="assets/images/email.png"
+          class="style-img"
+          (click)="showMsg(msg)"
+        />
+        <p matLine style="font-weight: bolder">{{ msg.msgTitle }}</p>
+        <button mat-icon-button>
+          <mat-icon color="primary" (click)="delete(msg.msgId, template)">
+            delete
+          </mat-icon>
+        </button>
+      </mat-list-item>
+    </mat-list>
+  </mat-card-content>
+</mat-card>
+
+<ng-template #template>
+  <h3>هل تريد تأكيد حذف هذا العنصر؟</h3>
+  <div mat-dialog-actions>
+    <button mat-button mat-dialog-close cdkFocusInitial>الغاء الأمر</button>
+    <button mat-button [mat-dialog-close]="true">حذف</button>
+  </div>
+</ng-template>

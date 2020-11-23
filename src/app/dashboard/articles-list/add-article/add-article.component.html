@@ -1,0 +1,94 @@
+<div class="mat-elevation-z2 style-buttons">
+  <div *ngIf="!uploadFileTask && !saveToDataBaseTask">
+    <button mat-raised-button color="primary" (click)="addArticle()">
+      حفظ
+    </button>
+    <button mat-raised-button mat-dialog-close>الغاء الأمر</button>
+  </div>
+
+  <div *ngIf="uploadFileTask && !saveToDataBaseTask">
+    <h4>الرجاء الانتظار ..</h4>
+    <h4>يتم الآن رفع الملف إلى الخادم</h4>
+    <mat-progress-bar
+      *ngIf="percentage | async as pct"
+      class="style-progress"
+      mode="determinate"
+      [value]="pct"
+    ></mat-progress-bar>
+    <div *ngIf="snapshot | async as snap">
+      <div *ngIf="snap.bytesTransferred">
+        <span>{{ snap.bytesTransferred | FileSize }}</span>
+        &nbsp;&nbsp;&nbsp;
+        <span> من </span>
+        &nbsp;&nbsp;&nbsp;
+        <span>{{ snap.totalBytes | FileSize }}</span>
+      </div>
+    </div>
+  </div>
+
+  <div *ngIf="saveToDataBaseTask">
+    <h3>الرجاء الإنتظار ..</h3>
+    <h3>يتم الآن استكمال حفظ البيانات</h3>
+  </div>
+
+  <div *ngIf="uploadFileTask || saveToDataBaseTask">
+    <div class="loading">
+      <div class="uil-ring-css">
+        <div></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<form
+  [formGroup]="articleForm"
+  [ngClass]="{
+    'style-form1': !uploadFileTask || !saveToDataBaseTask,
+    'style-form2': uploadFileTask || saveToDataBaseTask
+  }"
+>
+  <div>
+    <mat-form-field class="style-form-field">
+      <mat-label>عنوان المقالة</mat-label>
+      <input matInput formControlName="articleTitle" required />
+    </mat-form-field>
+  </div>
+  <div>
+    <mat-form-field>
+      <ngx-mat-file-input
+        formControlName="articleFile"
+        placeholder="تحميل ملف بصيغة pdf"
+        [accept]="'.pdf'"
+        required
+        #removableInput
+        (change)="detectFiles($event)"
+      ></ngx-mat-file-input>
+      <mat-icon *ngIf="removableInput.empty" matSuffix>folder</mat-icon>
+      <button
+        mat-icon-button
+        matSuffix
+        *ngIf="!removableInput.empty"
+        (click)="removableInput.clear($event)"
+      >
+        <mat-icon>clear</mat-icon>
+      </button>
+      <mat-error
+        *ngIf="articleForm.get('articleFile').hasError('maxContentSize')"
+      >
+        <span>حجم الملف يجب ان لا يتعدى</span>
+        <span> 5 MB </span>
+      </mat-error>
+    </mat-form-field>
+  </div>
+  <div>
+    <mat-form-field class="style-form-field">
+      <mat-label>وصف المقالة</mat-label>
+      <textarea
+        matInput
+        formControlName="articleDescription"
+        required
+        rows="6"
+      ></textarea>
+    </mat-form-field>
+  </div>
+</form>

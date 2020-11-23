@@ -1,0 +1,31 @@
+.style-form {
+  min-width: 150px;
+  max-width: 500px;
+  width: 100%;
+}
+
+.full-width {
+  width: 100%;
+  margin: 0px;
+}
+
+.style-card {
+  top: 20px;
+  padding: 0 0 16px 0;
+}
+
+.style-card-title {
+  margin-top: 10px;
+}
+
+.style-card-content {
+  margin: 16px;
+}
+
+.style-card-actions {
+  margin: 16px 16px 0 16px;
+}
+
+.progress-bar {
+  margin: 30px 0px;
+}

@@ -1,0 +1,51 @@
+<!-- <img
+  fxLayout="column"
+  fxLayoutAlign="center center"
+  class="style-image"
+  src="./../../../assets/images/video.jpg"
+/> -->
+<mat-card class="style-card">
+  <button
+    mat-raised-button
+    color="primary"
+    class="style-button"
+    (click)="addVideo()"
+  >
+    إضافة
+  </button>
+  <hr class="style-hr" />
+  <mat-card-content>
+    <mat-list>
+      <mat-list-item class="style-list-item" *ngFor="let video of videos">
+        <img
+          matListAvatar
+          src="assets/images/video.jpg"
+          class="style-img"
+          (click)="videoPreview(video.videoUrl)"
+        />
+        <p matLine style="font-weight: bolder">{{ video.videoTitle }}</p>
+        <p matLine>
+          {{ video.videoDescription }}
+        </p>
+        <button mat-icon-button>
+          <mat-icon color="primary" (click)="editVideo(video.videoId)">
+            edit
+          </mat-icon>
+        </button>
+        <button mat-icon-button>
+          <mat-icon color="primary" (click)="delete(video.videoId, template)">
+            delete
+          </mat-icon>
+        </button>
+      </mat-list-item>
+    </mat-list>
+  </mat-card-content>
+</mat-card>
+
+<ng-template #template>
+  <h3>هل تريد تأكيد حذف هذا العنصر؟</h3>
+  <div mat-dialog-actions>
+    <button mat-button mat-dialog-close cdkFocusInitial>الغاء الأمر</button>
+    <button mat-button [mat-dialog-close]="true">حذف</button>
+  </div>
+</ng-template>

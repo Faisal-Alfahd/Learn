@@ -1,0 +1,13 @@
+<app-loader *ngIf="loading"></app-loader>
+<div class="mat-elevation-z2">
+  <button mat-mini-fab mat-dialog-close color="primary" style="margin: 5px">
+    <mat-icon>close</mat-icon>
+  </button>
+</div>
+<ngx-extended-pdf-viewer
+  [src]="data"
+  useBrowserLocale="true"
+  height="80vh"
+  (pdfLoaded)="loading = false"
+>
+</ngx-extended-pdf-viewer>

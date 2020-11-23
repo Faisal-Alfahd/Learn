@@ -1,0 +1,39 @@
+.style-card {
+  margin: 10% 5% 20% 5%;
+  padding-top: 5px;
+}
+
+.style-img {
+  border-radius: 0px;
+  cursor: pointer;
+}
+
+// .style-image{
+//   position: fixed;
+//   top: 3%;
+//   width: 50px;
+//   height: 50px;
+//   border-radius: 50%;
+//   z-index: 1;
+//   margin: 0 auto;
+// }
+
+.style-button {
+  width: 200px;
+}
+
+.style-hr {
+  border-color: teal;
+}
+
+.style-list-item {
+  border-bottom: 0.5px solid teal;
+  margin-bottom: 3px;
+}
+
+::ng-deep .custom-dialog-container {
+  mat-dialog-container {
+    padding: 0;
+    width: 300px;
+  }
+}

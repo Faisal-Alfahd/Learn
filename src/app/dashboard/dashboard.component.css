@@ -1,0 +1,13 @@
+:host ::ng-deep .mat-tab-body-wrapper {
+  height: 80vh !important;
+}
+
+:host ::ng-deep .mat-tab-label-content {
+  font-weight: bolder !important;
+  font-size: larger;
+}
+
+:host ::ng-deep .mat-ink-bar {
+  height: 5px;
+  border: 1px solid teal;
+}

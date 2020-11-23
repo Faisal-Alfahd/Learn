@@ -1,0 +1,50 @@
+<div fxLayout="column" fxLayoutAlign="center center">
+  <mat-card class="style-card">
+    <mat-card-header
+      class="mat-elevation-z2"
+      fxLayout="row"
+      fxLayoutAlign="center"
+    >
+      <mat-card-title class="style-card-title">تسجيل الدخول</mat-card-title>
+    </mat-card-header>
+    <mat-card-content class="style-card-content">
+      <form class="style-form" [formGroup]="userForm">
+        <mat-form-field class="full-width">
+          <mat-label>أسم المستخدم</mat-label>
+          <input matInput formControlName="username" required />
+        </mat-form-field>
+
+        <mat-form-field class="full-width">
+          <mat-label>كلمة المرور</mat-label>
+          <input
+            matInput
+            type="password"
+            formControlName="password"
+            required
+            autocomplete
+          />
+        </mat-form-field>
+      </form>
+    </mat-card-content>
+    <mat-card-actions class="style-card-actions">
+      <ng-template #bottons>
+        <button mat-raised-button class="full-width" (click)="login()">
+          دخول
+        </button>
+        <button
+          mat-raised-button
+          color="primary"
+          style="width: 100%; margin: 10px 0px"
+          (click)="loginAsGuest()"
+        >
+          الدخول كضيف
+        </button>
+      </ng-template>
+      <mat-progress-bar
+        class="progress-bar"
+        *ngIf="loading; else bottons"
+        mode="indeterminate"
+      ></mat-progress-bar>
+    </mat-card-actions>
+  </mat-card>
+</div>

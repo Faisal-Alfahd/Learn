@@ -1,0 +1,41 @@
+<div class="mat-elevation-z2 style-buttons">
+  <ng-template #bottons>
+    <button mat-raised-button color="primary" (click)="addVideo()">حفظ</button>
+    <button mat-raised-button mat-dialog-close>الغاء الأمر</button>
+  </ng-template>
+  <mat-progress-bar
+    class="progress-bar"
+    *ngIf="loading; else bottons"
+    mode="indeterminate"
+  ></mat-progress-bar>
+</div>
+<form class="style-form" [formGroup]="videoForm">
+  <div>
+    <mat-form-field class="style-form-field">
+      <mat-label>عنوان المقطع</mat-label>
+      <input matInput formControlName="videoTitle" required />
+    </mat-form-field>
+  </div>
+  <div>
+    <mat-form-field class="style-form-field">
+      <mat-label>رابط المقطع</mat-label>
+      <textarea
+        matInput
+        formControlName="videoUrl"
+        required
+        rows="3"
+      ></textarea>
+    </mat-form-field>
+  </div>
+  <div>
+    <mat-form-field class="style-form-field">
+      <mat-label>وصف المقطع</mat-label>
+      <textarea
+        matInput
+        formControlName="videoDescription"
+        required
+        rows="6"
+      ></textarea>
+    </mat-form-field>
+  </div>
+</form>

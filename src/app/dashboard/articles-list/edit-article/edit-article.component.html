@@ -1,0 +1,33 @@
+<div class="mat-elevation-z2 style-buttons">
+  <ng-template #bottons>
+    <button mat-raised-button color="primary" (click)="updateArticle()">
+      حفظ
+    </button>
+    <button mat-raised-button mat-dialog-close>الغاء الأمر</button>
+  </ng-template>
+  <mat-progress-bar
+    class="progress-bar"
+    *ngIf="loading; else bottons"
+    mode="indeterminate"
+  ></mat-progress-bar>
+</div>
+
+<form class="style-form" [formGroup]="articleForm">
+  <div>
+    <mat-form-field class="style-form-field">
+      <mat-label>عنوان المقالة</mat-label>
+      <input matInput formControlName="articleTitle" required />
+    </mat-form-field>
+  </div>
+  <div>
+    <mat-form-field class="style-form-field">
+      <mat-label>وصف المقالة</mat-label>
+      <textarea
+        matInput
+        formControlName="articleDescription"
+        required
+        rows="6"
+      ></textarea>
+    </mat-form-field>
+  </div>
+</form>

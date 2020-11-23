@@ -1,0 +1,48 @@
+<mat-card class="style-card">
+  <button
+    mat-raised-button
+    color="primary"
+    class="style-button"
+    (click)="addVideo()"
+  >
+    إضافة
+  </button>
+  <hr class="style-hr" />
+  <mat-card-content>
+    <mat-list>
+      <mat-list-item class="style-list-item" *ngFor="let article of articles">
+        <img
+          matListAvatar
+          src="assets/images/pdf.jpg"
+          class="style-img"
+          (click)="pdfPreview(article.articleUrl)"
+        />
+        <p matLine style="font-weight: bolder">{{ article.articleTitle }}</p>
+        <p matLine>
+          {{ article.articleDescription }}
+        </p>
+        <button mat-icon-button>
+          <mat-icon color="primary" (click)="editVideo(article.articleId)">
+            edit
+          </mat-icon>
+        </button>
+        <button mat-icon-button>
+          <mat-icon
+            color="primary"
+            (click)="delete(article.articleId, template, article.path)"
+          >
+            delete
+          </mat-icon>
+        </button>
+      </mat-list-item>
+    </mat-list>
+  </mat-card-content>
+</mat-card>
+
+<ng-template #template>
+  <h3>هل تريد تأكيد حذف هذا العنصر؟</h3>
+  <div mat-dialog-actions>
+    <button mat-button mat-dialog-close cdkFocusInitial>الغاء الأمر</button>
+    <button mat-button [mat-dialog-close]="true">حذف</button>
+  </div>
+</ng-template>
